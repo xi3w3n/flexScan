@@ -1,5 +1,5 @@
 # flexScan
-基于go写的信息收集（子域名、端口扫描、目录扫描、漏洞扫描），目的是为了发现资产脆弱点，功能慢慢完善。
+基于go写的信息收集工具（~~子域名扫描~~、端口扫描、目录扫描、~~漏洞扫描~~），目的是为了发现资产脆弱点，功能慢慢完善。
 # 免责声明
 
 该工具仅用于安全自查检测
@@ -11,6 +11,34 @@
 # 使用说明
 
 flexScan -h
+
+```
+Usage:
+  flexScan [OPTIONS]
+
+模式选择:
+  -m, --mode=     dir（目录扫描）port（端口扫描）
+  -f, --file=     批量扫描，指定目标txt文件（通用参数）
+  -o, --output=   指定输出的目标txt文件（通用参数） (default: result_mode.txt)
+  -t, --threads=  并发数量（通用参数） (default: 200)
+      --proxy=    设置代理地址，例：--proxy http://127.0.0.1:8080
+
+目录扫描参数:
+  -u, --url=      指定的URL
+  -d, --dict=     内置字典：s小字典、b大字典、js扫js文件 或者 某个字典的路径 (default: s)
+  -x, --excode=   不显示哪些返回码，例:-x 403 或 -x 403,301
+  -n, --onlycode= 只显示哪些返回码，例:-n 200 或 -n 200,403
+  -e, --endings=  指定某种后缀类型（只有大字典支持），例：-e jsp 或 -e php
+
+端口扫描参数:
+  -i, --ip=       指定ip或ip段
+  -p, --port=     指定top端口：t100、t1000、all（全端口）或 1000,2000,8080 或 1000-2000 或 8080,100-200 (default:
+                  t100)
+      --np=       是否要探活：y、n (default: n)
+
+Help Options:
+  -h, --help      Show this help message
+```
 
 ### 目录扫描
 
